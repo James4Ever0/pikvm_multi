@@ -1,0 +1,51 @@
+kvmd:
+    gpio:
+        drivers:
+            toggle_only:
+                type: cmd
+                cmd: ["/usr/local/bin/python3", "-c", "import requests;requests.get('http://localhost:8790/toggle_only')"]
+            reset_hid:
+                type: cmd
+                cmd: ["/usr/local/bin/python3", "-c", "import requests;requests.get('http://localhost:8790/reset_hid')"]
+            reset_usb:
+                type: cmd
+                cmd: ["/usr/local/bin/python3", "-c", "import requests;requests.get('http://localhost:8790/reset_usb')"]
+            reset_hid_usb:
+                type: cmd
+                cmd: ["/usr/local/bin/python3", "-c", "import requests;requests.get('http://localhost:8790/reset_hid_usb')"]
+            toggle:
+                type: cmd
+                cmd: ["/usr/local/bin/python3", "-c", "import requests;requests.get('http://localhost:8790/toggle')"]
+        scheme:
+            reset_hid:
+                driver: reset_hid
+                pin: 0
+                mode: output
+                switch: false
+            reset_usb:
+                driver: reset_usb
+                pin: 0
+                mode: output
+                switch: false
+            reset_hid_usb:
+                driver: reset_hid_usb
+                pin: 0
+                mode: output
+                switch: false
+            toggle_only:
+                driver: toggle_only
+                pin: 0
+                mode: output
+                switch: false
+            toggle:
+                driver: toggle
+                pin: 0
+                mode: output
+                switch: false
+        view:
+            table:
+                - ["toggle|confirm|Toggle"]
+                - ["toggle_only|confirm|Toggle only"]
+                - ["reset_hid|confirm|Reset HID"]
+                - ["reset_usb|confirm|Reset USB"]
+                - ["reset_hid_usb|confirm|Reset HID USB"]

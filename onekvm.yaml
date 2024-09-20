@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  kvmd:
+    #restart: always
+    container_name: kvmd
+    #image: shantur/pikvm:latest
+    #image: registry.cn-hangzhou.aliyuncs.com/silentwind/kvmd:dev
+    image: onekvm:v0.1
+    privileged: true  # Add this line to enable privileged mode
+    environment:
+      - TERM=dumb
+    devices:
+      - /dev/v4l/by-id/usb-Actions_Micro_Display_capture-UVC05_-1877650130-video-index0:/dev/kvmd-video
+      #- /dev/ttyUSB0:/dev/kvmd-hid
+      - /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0:/dev/kvmd-hid
+    volumes:
+      - ./override_gpio.yaml:/etc/kvmd/override.d/gpio.yaml:ro
+    network_mode: host
+        #    ports:
+        #- "8080:8080"
+        #- "4430:4430"
+        #- "5900:5900"
+        #- "623:623"
+
