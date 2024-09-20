@@ -188,3 +188,4 @@ logs
 .bfg_report/*
 
 CH341SER_LINUX
+!LICENSE
